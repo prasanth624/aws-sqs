@@ -14,9 +14,13 @@ module "sqs_queue" {
   queue_policy                = file("./sqs-policy.json")
   use_sqs_managed_sse_enabled = true
   kms_key_id                  = ""
+
+  enable_dlq            = false
+  dead_letter_queue_arn = ""
+  max_receive_count     = 5
+
   tags = {
     Environment = "Dev"
     Team        = "DevOps"
   }
 }
-

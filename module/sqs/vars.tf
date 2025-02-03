@@ -60,6 +60,7 @@ variable "fifo_throughput_limit" {
   type    = string
   default = "perMessageGroupId"
 }
+
 variable "deduplication_scope" {
   type    = string
   default = "messageGroup"
@@ -69,5 +70,19 @@ variable "tags" {
   description = "Tags to apply to the SQS queue"
   type        = map(string)
   default     = {}
+}
+
+variable "enable_dlq" {
+  type    = bool
+  default = false
+}
+
+variable "dead_letter_queue_arn" {
+  description = "ARN of the dead letter queue"
+  type        = string
+}
+
+variable "max_receive_count" {
+  type = number
 }
 
