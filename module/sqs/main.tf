@@ -19,17 +19,6 @@ resource "aws_sqs_queue" "sqs" {
   tags = var.tags
 }
 
-variable "enable_dlq" {
-  type    = bool
-  default = false
-}
-variable "dead_letter_queue_arn" {
-  description = "ARN of the dead letter queue"
-  type        = string
-}
-variable "max_receive_count" {
-  type = number
-}
 resource "aws_sqs_queue_policy" "sqs_policy" {
   count     = length(var.queue_policy) > 0 ? 1 : 0
   queue_url = aws_sqs_queue.sqs.id
